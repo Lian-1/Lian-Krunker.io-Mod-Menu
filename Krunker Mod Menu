@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name          Lian Krunker.io Mod Menu
-// @description   Lian Krunker Mod Menu
-// @version       3.01
-// @author        Lian - From Lian
-// @homepage     https://media.giphy.com/media/iHVzXj3Ayzl9W4GAXw/giphy.gif
-// @icon64       https://media.giphy.com/media/iHVzXj3Ayzl9W4GAXw/giphy.gif
+// @description  Lian Mod Menu
+// @version       3.02
+// @author        Lian
+// @homepage   https://github.com/Lian-1
 // @match         *://krunker.io/*
 // @exclude       *://krunker.io/editor*
 // @exclude       *://krunker.io/social*
@@ -454,7 +453,7 @@ class Utilities {
                 const menu = window.windows[11];
                 menu.header = "Settings";
                 menu.gen = _ => {
-                    var tmpHTML = `<div style='text-align:center'> <a onclick='window.open("https://skidlamer.github.io/")' class='menuLink'>Lian Mod Menu Settings</center></a> <hr> </div>`;
+                    var tmpHTML = `<div style='text-align:center'> <a onclick='window.open("https://github.com/Lian-1)' class='menuLink'>Lian Mod Menu Settings</center></a> <hr> </div>`;
                     for (const key in this.settings) {
                         if (this.settings[key].pre) tmpHTML += this.settings[key].pre;
                         tmpHTML += "<div class='settName' id='" + key + "_div' style='display:" + (this.settings[key].hide ? 'none' : 'block') + "'>" + this.settings[key].name +
@@ -464,7 +463,7 @@ class Utilities {
                     return tmpHTML;
                 };
                 clearInterval(waitForWindows);
-                this.createButton("5k1D", "https://i.imgur.com/1tWAEJx.gif", () => {
+                this.createButton("Lian", "", () => {
                     this.toggleMenu()
                 })
             }
@@ -777,8 +776,8 @@ class Utilities {
                 this.ws._dispatchEvent = new Proxy(this.ws._dispatchEvent, {
                     apply: function(target, that, [type, event]) {
                         if (type =="init") {
-                            if(event[9].bill && window.utilities.settings.customBillboard.val.length > 1) {
-                                event[9].bill.txt = window.utilities.settings.customBillboard.val;
+                            if(event[10] && event[10].length && event[10].bill && window.utilities.settings.customBillboard.val.length > 1) {
+                                event[10].bill.txt = window.utilities.settings.customBillboard.val;
                             }
                         }
 
@@ -893,7 +892,7 @@ class Utilities {
         }
         console.groupEnd();
         /*Lemons1337*/string = string.replace(/\[(0x[a-zA-Z0-9]+,?)+]\['map']\(\w+=>String\['fromCharCode']\(\w+\)\)\['join']\(''\)/g, a => "'" + w.eval(a) + "'");
-        const spoonter = `console.log("ahoy thar Lianney",'💩');`
+        const spoonter = `console.log("ahoy thar Skidney",'💩');`
         return spoonter + string;
     }
 
@@ -1233,7 +1232,7 @@ class Utilities {
                     //target.jumpBobY * this.config.jumpVel
                     let canSee = this.renderer.frustum.containsPoint(target[this.vars.objInstances].position);
                     let inCast = this.rayC.intersectObjects(this.playerMaps, true).length;
-                    let yDire = (this.getDir(this.me.z, this.me.x, target.z, target.x) || 0)
+                    let yDire = (this.getDir(this.me.z, this.me.x, target.z, target.x) || 0);
                     let xDire = ((this.getXDire(this.me.x, this.me.y, this.me.z, target.x, target.y - target[this.vars.crouchVal] * this.consts.crouchDst + this.me[this.vars.crouchVal] * this.consts.crouchDst, target.z) || 0) - this.consts.recoilMlt * this.me[this.vars.recoilAnimY])
                     if (this.me.weapon[this.vars.nAuto] && this.me[this.vars.didShoot]) {
                         input[this.key.shoot] = 0;
@@ -1244,6 +1243,7 @@ class Utilities {
                     else if (!canSee && this.settings.frustrumCheck.val) this.resetLookAt();
                     else {
                         input[this.key.scope] = this.settings.autoAim.val === "assist"||this.settings.autoAim.val === "correction"||this.settings.autoAim.val === "trigger" ? this.controls[this.vars.mouseDownR] : 0;
+                        if (this.me.weapon.name == 'Akimbo Uzi') this.me[this.vars.aimVal] = input[this.key.scope];
                         switch (this.settings.autoAim.val) {
                             case "quickScope":
                                 input[this.key.scope] = 1;
@@ -1467,7 +1467,7 @@ window.Function = new Proxy(Function, {
 
 function onPageLoad() {
     window.instructionHolder.style.display = "block";
-    window.instructions.innerHTML = `<div id="settHolder"><img src="" width="25%"></div><a href='https://skidlamer.github.io/wp/' target='_blank.'><div class=""></div></a>`
+    window.instructions.innerHTML = `<div id="settHolder"><img src=" width="25%"></div><a href='https://skidlamer.github.io/wp/' target='_blank.'><div class=""></div></a>`
     window.request = (url, type, opt = {}) => fetch(url, opt).then(response => response.ok ? response[type]() : null);
     let Module = {
         onRuntimeInitialized: function() {
